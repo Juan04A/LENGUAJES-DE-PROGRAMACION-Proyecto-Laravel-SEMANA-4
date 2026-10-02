@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>EjemploSeg - @yield('title', 'Acceso')</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ config('app.name') }} - @yield('title')</title>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-100 font-sans antialiased">
- 
-    <div class="min-h-screen flex flex-col items-center justify-center p-6">
-        <a href="/" class="text-2xl font-bold text-gray-800 mb-6">
-            EjemploSeg
-        </a>
- 
-        <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-            @if(session('success'))
-                <div class="bg-green-100 text-green-700 px-4 py-3 rounded mb-4">
-                    {{ session('success') }}
-                </div>
-            @endif
- 
-            @yield('content')
-        </div>
+<body class="min-h-screen flex items-center justify-center p-4 font-sans antialiased"
+      style="background: linear-gradient(135deg, #022c22, #064e3b, #065f46);">
+
+  <div class="w-full max-w-md">
+    <div class="text-center mb-8">
+      <a href="{{ url('/') }}" class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/15 text-amber-300 text-3xl font-bold shadow-lg mb-4">
+        $
+      </a>
+      <h1 class="text-3xl font-bold text-white">{{ config('app.name') }}</h1>
+      <p class="text-white/70 mt-1">@yield('subtitle')</p>
     </div>
+
+    <div class="bg-white rounded-2xl shadow-2xl p-8">
+      @yield('content')
+    </div>
+
+    <p class="text-center text-white/60 text-sm mt-6">
+      © {{ date('Y') }} {{ config('app.name') }}
+    </p>
+  </div>
 </body>
 </html>
